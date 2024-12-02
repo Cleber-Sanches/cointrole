@@ -1,0 +1,15 @@
+.env
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+.env
+package-lock.json
+.build
+docker
+
+.DS_Store
+yarn.lock
+data
