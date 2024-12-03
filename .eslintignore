@@ -1,0 +1,13 @@
+# Dependências
+node_modules/
+
+# Arquivos de build e distribuição
+dist/
+build/
+out/
+
+# Arquivos de configuração do servidor e Docker
+
+# Arquivos e pastas do GitHub
+/.github/
+*.md
