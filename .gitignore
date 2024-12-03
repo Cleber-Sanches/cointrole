@@ -13,3 +13,5 @@ docker
 .DS_Store
 yarn.lock
 data
+
+.vscode
