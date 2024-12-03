@@ -1,21 +1,21 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/types" // Ajuste o caminho conforme necessário
-    ],
-    "resolveJsonModule": true,
-    "lib": ["ES2022"],
-    "module": "node16",
-    "target": "ES2022",
-    "outDir": "./.build" // Define a pasta onde os arquivos JavaScript serão gerados
-  },
-  "include": [
-    "src/**/*" // Inclui todos os arquivos TypeScript na pasta src
-  ],
-  "exclude": [
-    "node_modules" // Exclui a pasta node_modules
-  ]
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"typeRoots": [
+			"./node_modules/@types",
+			"./src/types" // Ajuste o caminho conforme necessário
+		],
+		"resolveJsonModule": true,
+		"lib": ["ES2022"],
+		"module": "node16",
+		"target": "ES2022",
+		"outDir": "./.build" // Define a pasta onde os arquivos JavaScript serão gerados
+	},
+	"include": [
+		"src/**/*" // Inclui todos os arquivos TypeScript na pasta src
+	],
+	"exclude": [
+		"node_modules" // Exclui a pasta node_modules
+	]
 }
