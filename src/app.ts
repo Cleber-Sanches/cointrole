@@ -1,0 +1,8 @@
+import express from 'express';
+
+export const app = express();
+app.use(express.json());
+
+app.use('/', (req, res) => {
+  res.send('Bem vindo ao Cointrole!');
+});
