@@ -15,11 +15,11 @@ const development: Knex.Config = {
     propagateCreateError: true,
   },
   migrations: {
-    directory: path.resolve(__dirname, 'src', 'infreastructure', 'database', 'migrations'),
+    directory: path.resolve(__dirname, 'migrations'),
     extension: 'ts',
   },
   seeds: {
-    directory: path.resolve(__dirname, 'src', 'infreastructure', 'database', 'seeds'),
+    directory: path.resolve(__dirname, 'seeds'),
     extension: 'ts',
   },
   connection: {
@@ -44,11 +44,11 @@ const production: Knex.Config = {
     propagateCreateError: true,
   },
   migrations: {
-    directory: path.resolve(__dirname, 'src', 'infreastructure', 'database', 'migrations'),
+    directory: path.resolve(__dirname, 'migrations'),
     extension: 'ts',
   },
   seeds: {
-    directory: path.resolve(__dirname, 'src', 'infreastructure', 'database', 'seeds'),
+    directory: path.resolve(__dirname, 'seeds'),
     extension: 'ts',
   },
   connection: process.env.DATABASE_URL,
