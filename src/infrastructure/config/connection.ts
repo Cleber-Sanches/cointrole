@@ -1,14 +1,16 @@
-import 'dotenv/config';
 import knex from 'knex';
-import config from '../database/knexfile';
+import env from './env';
 
-const environment = (process.env.ENVIRONMENT || 'production') as keyof typeof config;
-
-if (!config[environment]) {
-  throw new Error(`Configuração para o ambiente '${environment}' não encontrada no knexfile.`);
-}
-
-export const db = knex(config[environment]);
+export const db = knex({
+  client: env.DATABASE_CLIENT,
+  connection: {
+    host: env.DATABASE_HOST,
+    port: env.DATABASE_PORT,
+    user: env.DATABASE_USER,
+    password: env.DATABASE_PASSWORD,
+    database: env.DATABASE_NAME,
+  },
+});
 
 export const checkDatabaseConnection = async () => {
   try {

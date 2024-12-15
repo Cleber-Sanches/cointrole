@@ -1,18 +1,21 @@
-import express, { Express } from 'express';
+import 'dotenv/config';
+import express from 'express';
 import { checkDatabaseConnection } from './infrastructure/config/connection';
 import { indexRoutes } from './infrastructure/http/routes';
 
-export const app: Express = express();
-const port = 3333;
-
+const app = express();
 app.use(express.json());
+
 app.use(indexRoutes);
 
-const startServer = async () => {
-  await checkDatabaseConnection();
-  app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-  });
-};
+const PORT = process.env.PORT || 3000;
 
-startServer();
+checkDatabaseConnection()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Erro ao iniciar o servidor:', error);
+  });
