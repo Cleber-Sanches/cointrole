@@ -1,12 +1,15 @@
 import 'dotenv/config';
+import 'express-async-errors';
 import express from 'express';
 import { checkDatabaseConnection } from './infrastructure/config/connection';
-import { indexRoutes } from './infrastructure/http/routes';
+import { routes } from './infrastructure/http/routes';
 
-const app = express();
+export const app = express();
 app.use(express.json());
 
-app.use(indexRoutes);
+app.use(express.urlencoded({ extended: true }));
+
+app.use(routes);
 
 const PORT = process.env.PORT || 3000;
 

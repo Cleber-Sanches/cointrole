@@ -3,6 +3,7 @@
   "plugins": ["prettier"],
   "rules": {
     "semi": ["error", "always"],
+    "no-useless-constructor": "off",
     "prettier/prettier": [
       "error",
       {

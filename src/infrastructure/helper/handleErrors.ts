@@ -1,10 +1,11 @@
-import { validateInstanceOfErrors } from '../../application/services/validateInstanceOfErrors';
+import { validateInstanceOfErrors } from '../../shared/services/validateInstanceOfErrors';
 
 interface IValidateInstanceOfErrors {
   statusCode: number;
   message: string;
   error: string;
-  errors?: string[];
+  errors?: object[];
+  issue?: string[];
 }
 export function handleErrors(error: unknown): IValidateInstanceOfErrors {
   console.log(error);

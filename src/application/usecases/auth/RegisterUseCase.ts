@@ -9,9 +9,11 @@ export class RegisterUseCase {
 
   async execute(data: User): Promise<User> {
     const { email } = data;
+    console.log('RegisterUseCase: Iniciando execução...');
     const userExists = await this.userRepository.findByEmail(email);
 
     if (userExists) {
+      console.log('RegisterUseCase: Usuário já existe!');
       throw new BadRequestError('Este email já está cadastrado');
     }
 
@@ -24,6 +26,7 @@ export class RegisterUseCase {
       password: hashedPassword,
     });
 
+    console.log('RegisterUseCase: Usuário criado com sucesso!');
     return this.userRepository.insert(user);
   }
 }

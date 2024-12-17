@@ -1,7 +1,9 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import { authRoutes } from './auth';
+import { globalErrorHandler } from '../middlewares/errors/error.midllewares';
 
-export const indexRoutes = Router();
+export const routes = Router();
 
-indexRoutes.get('/', (req: Request, res: Response) => {
-  res.send('Hello, world!');
-});
+routes.use('/auth', authRoutes);
+
+routes.use(globalErrorHandler);

@@ -1,6 +1,7 @@
-import path from 'path';
 import 'dotenv/config';
+import path from 'path';
 import { Knex } from 'knex';
+import env from '../config/env';
 
 const development: Knex.Config = {
   client: 'pg',
@@ -23,11 +24,11 @@ const development: Knex.Config = {
     extension: 'ts',
   },
   connection: {
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: env.DB_HOST,
+    port: env.DB_PORT,
+    user: env.DB_USER,
+    password: env.DB_PASSWORD,
+    database: env.DB_NAME,
   },
 };
 
@@ -51,7 +52,7 @@ const production: Knex.Config = {
     directory: path.resolve(__dirname, 'seeds'),
     extension: 'ts',
   },
-  connection: process.env.DATABASE_URL,
+  connection: env.DB_URL,
 };
 
 const config: { development: Knex.Config; production: Knex.Config } = {

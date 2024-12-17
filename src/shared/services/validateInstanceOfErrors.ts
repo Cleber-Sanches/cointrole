@@ -1,12 +1,12 @@
 import { ZodError } from 'zod';
-import { ResourceNotFoundError } from '../usecases/errors/ResourceNotFound';
-import { BadRequestError } from '../usecases/errors/BadRequestError';
+import { ResourceNotFoundError } from '../../application/usecases/errors/ResourceNotFound';
+import { BadRequestError } from '../../application/usecases/errors/BadRequestError';
 
 interface IValidateInstanceOfErrors {
   statusCode: number;
   message: string;
   error: string;
-  errors?: string[];
+  errors?: object[];
 }
 export function validateInstanceOfErrors(error: unknown): IValidateInstanceOfErrors {
   if (error instanceof ResourceNotFoundError) {
@@ -21,7 +21,9 @@ export function validateInstanceOfErrors(error: unknown): IValidateInstanceOfErr
       statusCode: 400,
       message: 'Erro na requisição',
       error: error.name,
-      errors: error.issues.map((issue) => issue.message),
+      errors: error.issues.map((issue) => {
+        return { message: issue.message, path: issue.path[0] };
+      }),
     };
   }
   if (error instanceof BadRequestError) {

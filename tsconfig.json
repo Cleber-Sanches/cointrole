@@ -5,12 +5,14 @@
     "strict": true,
     "noImplicitAny": true,
     "typeRoots": ["./src/types", "./src/@types"],
-    "strictPropertyInitialization": false,
+    // "strictPropertyInitialization": false,
     "resolveJsonModule": true,
     "lib": ["ES2022"],
     "module": "node16",
     "target": "ES2022",
     "outDir": "./dist"
+    // "allowImportingTsExtensions": true
+    // "noEmit": true
   },
   "include": ["src/**/*"],
   "types": ["vitest"],
