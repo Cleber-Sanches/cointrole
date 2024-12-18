@@ -3,13 +3,14 @@ import { User } from '../../../domain/entities/User';
 import { hash } from 'bcrypt';
 import { BadRequestError } from '../errors/BadRequestError';
 import { UserValidator } from '../../../domain/validators/UserValidator';
+import env from '../../../infrastructure/config/env';
 
 export class RegisterUseCase {
   constructor(private userRepository: KnexUserRepository) {}
 
-  async execute(data: User): Promise<User> {
+  async execute(data: User): Promise<object> {
     const { email } = data;
-    console.log('RegisterUseCase: Iniciando execução...');
+
     const userExists = await this.userRepository.findByEmail(email);
 
     if (userExists) {
@@ -19,14 +20,18 @@ export class RegisterUseCase {
 
     const validatedData = UserValidator.parse(data);
 
-    const hashedPassword = await hash(validatedData.password, 10);
+    const saltRounds = env.SALT_ROUNDS ? parseInt(env.SALT_ROUNDS) : 10;
+    const hashedPassword = await hash(validatedData.password, saltRounds);
 
     const user = new User({
-      ...data,
+      first_name: validatedData.first_name,
+      last_name: validatedData.last_name,
+      email: validatedData.email,
       password: hashedPassword,
     });
 
-    console.log('RegisterUseCase: Usuário criado com sucesso!');
-    return this.userRepository.insert(user);
+    await this.userRepository.insert(user);
+
+    return { message: 'Cadastro realizado com sucesso!' };
   }
 }
