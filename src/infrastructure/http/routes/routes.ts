@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { authRoutes } from './auth';
 import { globalErrorHandler } from '../middlewares/errors/error.midllewares';
+import { authRoutes } from './auth.routes';
 
 export const routes = Router();
 

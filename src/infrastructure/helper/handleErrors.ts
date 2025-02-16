@@ -1,4 +1,4 @@
-import { validateInstanceOfErrors } from '../../shared/services/validateInstanceOfErrors';
+import { validateInstanceOfErrors } from '../../shared/services/validateInstanceOfErrors.service';
 
 interface IValidateInstanceOfErrors {
   statusCode: number;

@@ -1,5 +1,5 @@
-import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/UserRepository';
-import { RegisterUseCase } from '../auth/RegisterUseCase';
+import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
+import { RegisterUseCase } from '../auth/Register.usecase';
 
 export function facCreateUserUseCase() {
   const userRepository = new KnexUserRepository();
