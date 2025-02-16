@@ -1,8 +1,6 @@
 import 'dotenv/config';
-import 'dotenv/config';
 import path from 'path';
 import { Knex } from 'knex';
-import env from '../config/env';
 import env from '../config/env';
 
 const development: Knex.Config = {
@@ -83,7 +81,6 @@ const production: Knex.Config = {
     directory: path.resolve(__dirname, 'seeds'),
     extension: 'ts',
   },
-  connection: env.DB_URL,
   connection: env.DB_URL,
 };
 

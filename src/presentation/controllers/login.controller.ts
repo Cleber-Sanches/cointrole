@@ -1,7 +1,7 @@
-import { LoginUseCase } from '../../application/usecases/auth/LoginUseCase';
 import { KnexUserRepository } from '../../infrastructure/database/repositories/knex/Users.repositories';
 import { Request, Response } from 'express';
 import { httpResponse } from '../../infrastructure/helper/httpResponse';
+import { LoginUseCase } from '../../application/usecases/auth/Login.usecase';
 
 export async function loginController(req: Request, res: Response) {
   const dataLogin = req.body;

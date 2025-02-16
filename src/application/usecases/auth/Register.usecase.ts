@@ -24,7 +24,10 @@ export class RegisterUseCase {
       throw new BadRequestError('Este email já está cadastrado');
     }
 
-    const saltRounds = env.SALT_ROUNDS ? parseInt(env.SALT_ROUNDS) : 10;
+    const saltRounds = env.SALT_ROUNDS ? parseInt(String(env.SALT_ROUNDS)) : 10;
+    if (isNaN(saltRounds)) {
+      throw new BadRequestError('SALT_ROUNDS deve ser um número válido');
+    }
     const hashedPassword = await hash(password, saltRounds);
 
     const user = new User({
