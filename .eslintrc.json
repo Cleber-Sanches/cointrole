@@ -1,8 +1,35 @@
 {
-  "extends": ["@rocketseat/eslint-config/node", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "@rocketseat/eslint-config/node",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier",
+    "import-helpers"
+  ],
   "rules": {
-    "semi": ["error", "always"],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "module",
+          [
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ],
     "no-useless-constructor": "off",
     "prettier/prettier": [
       "error",
