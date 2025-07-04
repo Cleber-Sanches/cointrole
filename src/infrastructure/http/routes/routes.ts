@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { globalErrorHandler } from '../middlewares/errors/error.midllewares';
 import { authRoutes } from './auth.routes';
 

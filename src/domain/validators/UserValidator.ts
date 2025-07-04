@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 import { errorMessages } from '../../application/usecases/errors/errorMessagesZod';
 
 export const UserValidator = z.object({

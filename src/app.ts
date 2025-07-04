@@ -1,7 +1,8 @@
 import 'dotenv/config';
 import 'express-async-errors';
-import express from 'express';
 import cors from 'cors';
+import express from 'express';
+
 import { checkDatabaseConnection } from './infrastructure/config/connection';
 import { routes } from './infrastructure/http/routes/routes';
 

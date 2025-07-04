@@ -1,8 +1,9 @@
-import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
-import { User } from '../../../domain/entities/User';
 import { hash } from 'bcrypt';
-import { BadRequestError } from '../errors/BadRequestError';
+
+import { User } from '../../../domain/entities/User';
 import env from '../../../infrastructure/config/env';
+import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
+import { BadRequestError } from '../errors/BadRequestError';
 
 interface IRegisterUserRequest {
   firstName: string;

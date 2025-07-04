@@ -1,6 +1,7 @@
 import 'dotenv/config';
-import config from './../database/knexfile';
 import knex, { Knex } from 'knex';
+
+import config from './../database/knexfile';
 import env from './env';
 
 const environment = (env.NODE_ENV || 'development') as keyof typeof config;

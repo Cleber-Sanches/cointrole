@@ -1,6 +1,7 @@
 import { ZodError } from 'zod';
-import { ResourceNotFoundError } from '../../application/usecases/errors/ResourceNotFound';
+
 import { BadRequestError } from '../../application/usecases/errors/BadRequestError';
+import { ResourceNotFoundError } from '../../application/usecases/errors/ResourceNotFound';
 
 interface IValidateInstanceOfErrors {
   statusCode: number;

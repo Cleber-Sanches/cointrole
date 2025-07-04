@@ -12,6 +12,7 @@
     "seed:run": "knex seed:run --knexfile src/infrastructure/database/knexfile.ts",
     "seed:create": "knex seed:make --knexfile src/infrastructure/database/knexfile.ts",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "format": "prettier --write src/**/*.ts src/**/*.tsx",
     "prepare": "husky install",
     "test": "vitest"

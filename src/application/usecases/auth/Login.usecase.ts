@@ -1,8 +1,9 @@
-import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
-import { User } from '../../../domain/entities/User';
 import { compare } from 'bcrypt';
-import { BadRequestError } from '../errors/BadRequestError';
 import jwt from 'jsonwebtoken';
+
+import { User } from '../../../domain/entities/User';
+import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
+import { BadRequestError } from '../errors/BadRequestError';
 
 export class LoginUseCase {
   constructor(private userRepository: KnexUserRepository) {}

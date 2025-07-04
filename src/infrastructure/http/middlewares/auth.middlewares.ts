@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+
 import { BadRequestError } from '../../../application/usecases/errors/BadRequestError';
 
 declare module 'express' {

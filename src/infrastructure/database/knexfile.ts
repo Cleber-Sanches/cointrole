@@ -1,6 +1,7 @@
 import 'dotenv/config';
-import path from 'path';
 import { Knex } from 'knex';
+import path from 'path';
+
 import env from '../config/env';
 
 const development: Knex.Config = {

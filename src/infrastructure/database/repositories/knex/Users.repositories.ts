@@ -1,5 +1,6 @@
-import { User } from '../../../../domain/entities/User';
 import { BaseRepository } from 'bq-knex-base-repository';
+
+import { User } from '../../../../domain/entities/User';
 import { db } from '../../../config/connection';
 import { IUserRepositoryAssign } from '../assign/users.assign';
 
