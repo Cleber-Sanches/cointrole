@@ -1,7 +1,4 @@
-import { BaseModel } from 'bq-knex-base-repository';
-export interface IUser extends BaseModel {
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-}
+import { IUser } from '../model/Users';
+
+export interface IInsertUser
+  extends Omit<IUser, 'id' | 'created_at' | 'updated_at' | 'deleted_at'> {}
