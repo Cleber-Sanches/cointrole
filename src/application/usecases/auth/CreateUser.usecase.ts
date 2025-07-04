@@ -1,42 +1,38 @@
 import { hash } from 'bcrypt';
 
-import { User } from '../../../domain/entities/User';
+import { ICreateUserRequest } from '../../../domain/schema/user.schema';
 import { env } from '../../../infrastructure/config/env';
-import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
+import { IUserRepositoryAssign } from '../../../infrastructure/database/repositories/assign/users.assign';
 import { BadRequestError } from '../errors/BadRequestError';
 
-interface IRegisterUserRequest {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
+export class CreateUserUseCase {
+  constructor(private readonly userRepository: IUserRepositoryAssign) {}
 
-export class RegisterUseCase {
-  constructor(private userRepository: KnexUserRepository) {}
-
-  async execute(request: IRegisterUserRequest): Promise<object> {
+  async execute(request: ICreateUserRequest): Promise<object> {
     const { firstName, email, lastName, password } = request;
 
-    const userExists = await this.userRepository.findByEmail(email);
+    const userExists = await this.userRepository.findOneBy({
+      email,
+      deleted_at: null,
+    });
 
     if (userExists) {
-      console.log('RegisterUseCase: Usuário já existe!');
       throw new BadRequestError('Este email já está cadastrado');
     }
 
     const saltRounds = env.SALT_ROUNDS ? parseInt(String(env.SALT_ROUNDS)) : 10;
+
     if (isNaN(saltRounds)) {
       throw new BadRequestError('SALT_ROUNDS deve ser um número válido');
     }
     const hashedPassword = await hash(password, saltRounds);
 
-    const user = new User({
+    const user = {
       first_name: firstName,
       last_name: lastName,
       email,
       password: hashedPassword,
-    });
+    };
 
     await this.userRepository.insert(user);
 
