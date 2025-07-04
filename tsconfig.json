@@ -4,17 +4,31 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "noImplicitAny": true,
-    "typeRoots": ["./src/types", "./src/@types"],
+    "typeRoots": [
+      "./src/types",
+      "./src/@types"
+    ],
     // "strictPropertyInitialization": false,
     "resolveJsonModule": true,
-    "lib": ["ES2022"],
+    "lib": [
+      "ES2022"
+    ],
     "module": "node16",
     "target": "ES2022",
     "outDir": "./dist"
     // "allowImportingTsExtensions": true
     // "noEmit": true
   },
-  "include": ["src/**/*"],
-  "types": ["vitest"],
-  "exclude": ["node_modules", "dist", "src/events"]
+  "include": [
+    "src/**/*",
+    "knexfile.ts"
+  ],
+  "types": [
+    "vitest"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/events"
+  ]
 }

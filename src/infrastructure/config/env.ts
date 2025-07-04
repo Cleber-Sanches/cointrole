@@ -1,4 +1,5 @@
-import { z } from 'zod';
+import 'dotenv/config';
+import z from 'zod';
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
@@ -11,6 +12,11 @@ const envSchema = z.object({
   DB_NAME: z.string(),
   SALT_ROUNDS: z.coerce.number().default(10),
 });
+const _env = envSchema.safeParse(process.env);
 
-const env = envSchema.parse(process.env);
-export default env;
+if (!_env.success) {
+  console.error('❌ Invalid environment variable', _env.error.format());
+  throw new Error('Invalid environment variable');
+}
+
+export const env = _env.data;

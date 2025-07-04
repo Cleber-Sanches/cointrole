@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt';
 
 import { User } from '../../../domain/entities/User';
-import env from '../../../infrastructure/config/env';
+import { env } from '../../../infrastructure/config/env';
 import { KnexUserRepository } from '../../../infrastructure/database/repositories/knex/Users.repositories';
 import { BadRequestError } from '../errors/BadRequestError';
 
